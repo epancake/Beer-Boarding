@@ -37,6 +37,14 @@ app.get("/solvers", (request, response) => {
   .catch(console.error);
 });
 
+app.get("/solvedby", (request, response) => {
+  queries.solvedby(1)
+  .then(solvers => {
+    response.json({ solvers });
+  })
+  .catch(console.error);
+});
+
 app.get("/questions_solvers", (request, response) => {
   queries.list("questions_solvers")
   .then(questions_solvers => {
