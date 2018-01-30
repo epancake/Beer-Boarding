@@ -62,7 +62,7 @@ app.get("/questions/:id", (request, response) => {
 });
 
 app.get("/solvers/:id", (request, response) => {
-    queries.read("solvers", request.params.id).then(solvers => {
+    queries.read("solvers", request.params.id).then(solver => {
         solver
             ? response.json({solver})
             : response.sendStatus(404)
