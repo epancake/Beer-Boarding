@@ -37,8 +37,8 @@ app.get("/solvers", (request, response) => {
   .catch(console.error);
 });
 
-app.get("/solvedby", (request, response) => {
-  queries.solvedby(1)
+app.get("/solvedby/:id", (request, response) => {
+  queries.solvedby(request.params.id)
   .then(solvers => {
     response.json({ solvers });
   })
@@ -53,8 +53,8 @@ app.get("/questions_solvers", (request, response) => {
   .catch(console.error);
 });
 
-app.get("/questions/:id", (request, response) => {
-    queries.read("questions", request.params.id).then(question => {
+app.get("/solvedby/:id", (request, response) => {
+    queries.read(request.params.id).then(question => {
         question
             ? response.json({question})
             : response.sendStatus(404)
