@@ -45,6 +45,14 @@ app.get("/solvedby/:id", (request, response) => {
   .catch(console.error);
 });
 
+app.get("/questions/:id", (request, response) => {
+  queries.solvedby(request.params.id)
+  .then(questions => {
+    response.json({ questions });
+  })
+  .catch(console.error);
+});
+
 app.get("/questions_solvers", (request, response) => {
   queries.list("questions_solvers")
   .then(questions_solvers => {
@@ -109,11 +117,10 @@ app.delete("/solvers/:id", (request, response) => {
 });
 
 app.put("/questions/:id", (request, response) => {
-    queries.update(request.params.id, request.body).then(question => {
+    queries.update('questions', request.params.id, request.body).then(question => {
         response.json({question});
     }).catch(console.error);
 });
-
 
 app.use((request, response) => {
     response.sendStatus(404);

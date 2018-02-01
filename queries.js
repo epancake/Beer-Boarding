@@ -14,7 +14,7 @@ module.exports = {
       .then(record => record[0])
   },
   update(table, id, question) {
-    return database(table).update(item)
+    return database(table).update(question)
       .where("id", id).returning("*").then(record => record[0])
   },
   delete(table, id) {
