@@ -87,7 +87,7 @@ app.get("/questions_solvers/:id", (request, response) => {
 
 
 app.post("/questions", (request, response) => {
-    queries.create("questions", request.body).then(question => {
+    queries.create("questions", request.body).then(questions => {
         response.status(201).json({questions});
     }).catch(console.error);
 });
