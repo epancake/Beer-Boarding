@@ -111,7 +111,7 @@ app.delete("/questions/:id", (request, response) => {
 });
 
 app.delete("/solvers/:id", (request, response) => {
-    queries.delete("solvers", request.params.id).then(() => {
+    queries.delete("solvers", request.params).then(() => {
         response.sendStatus(204);
     }).catch(console.error);
 });
