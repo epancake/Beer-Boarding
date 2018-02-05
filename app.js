@@ -116,6 +116,12 @@ app.delete("/solvers/:id", (request, response) => {
     }).catch(console.error);
 });
 
+app.delete("/questions_solvers/:id", (request, response) => {
+    queries.delete("questions_solvers", request.params.id).then(() => {
+        response.sendStatus(204);
+    }).catch(console.error);
+});
+
 app.put("/questions/:id", (request, response) => {
     queries.update('questions', request.params.id, request.body).then(question => {
         response.json({question});

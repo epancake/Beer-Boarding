@@ -19,7 +19,7 @@ module.exports = {
   },
   delete(table, id) {
     return database(table).delete().where("id", id)
-  },
+  },  
   solvedby(questionID) {
     return database('solvers').join('questions_solvers', 'solvers.id', '=', 'questions_solvers.solvers_id')
     .join('questions', 'questions.id', '=', 'questions_solvers.questions_id')
