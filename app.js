@@ -20,7 +20,7 @@ app.get("/", (request, response) => {
         })
       ))
       )
-    .catch(console.error)
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/questions", (request, response) => {
@@ -28,7 +28,7 @@ app.get("/questions", (request, response) => {
   .then(questions => {
     response.json({ questions });
   })
-  .catch(console.error);
+  .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/solvers", (request, response) => {
@@ -36,7 +36,7 @@ app.get("/solvers", (request, response) => {
   .then(solvers => {
     response.json({ solvers });
   })
-  .catch(console.error);
+  .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/solvedby/:id", (request, response) => {
@@ -44,7 +44,7 @@ app.get("/solvedby/:id", (request, response) => {
   .then(solvers => {
     response.json({ solvers });
   })
-  .catch(console.error);
+  .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/questions/:id", (request, response) => {
@@ -52,7 +52,7 @@ app.get("/questions/:id", (request, response) => {
   .then(questions => {
     response.json({ questions });
   })
-  .catch(console.error);
+  .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/questions_solvers", (request, response) => {
@@ -60,7 +60,7 @@ app.get("/questions_solvers", (request, response) => {
   .then(questions_solvers => {
     response.json({ questions_solvers });
   })
-  .catch(console.error);
+  .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/solvedby/:id", (request, response) => {
@@ -68,7 +68,8 @@ app.get("/solvedby/:id", (request, response) => {
         question
             ? response.json({question})
             : response.sendStatus(404)
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/solvers/:id", (request, response) => {
@@ -76,7 +77,8 @@ app.get("/solvers/:id", (request, response) => {
         solver
             ? response.json({solver})
             : response.sendStatus(404)
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.get("/questions_solvers/:id", (request, response) => {
@@ -84,50 +86,58 @@ app.get("/questions_solvers/:id", (request, response) => {
         question_solver
             ? response.json({question_solver})
             : response.sendStatus(404)
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 
 app.post("/questions", (request, response) => {
     queries.create("questions", request.body).then(questions => {
         response.status(201).json({questions});
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.post("/solvers", (request, response) => {
     queries.create("solvers", request.body).then(solvers => {
         response.status(201).json({solvers});
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.post("/questions_solvers", (request, response) => {
     queries.create("questions_solvers", request.body).then(questions_solvers => {
         response.status(201).json({questions_solvers});
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.delete("/questions/:id", (request, response) => {
     queries.delete("questions", request.params.id).then(() => {
         response.sendStatus(204);
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.delete("/solvers/:id", (request, response) => {
     queries.delete("solvers", request.params.id).then(() => {
         response.sendStatus(204);
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.delete("/questions_solvers/:id", (request, response) => {
     queries.delete("questions_solvers", request.params.id).then(() => {
         response.sendStatus(204);
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.put("/questions/:id", (request, response) => {
     queries.update('questions', request.params.id, request.body).then(question => {
         response.json({question});
-    }).catch(console.error);
+    })
+    .catch(err => response.status(500).send({message: err.message}))
 });
 
 app.use((request, response) => {
