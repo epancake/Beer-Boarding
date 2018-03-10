@@ -19,25 +19,11 @@ module.exports = {
   },
   delete(table, id) {
     return database(table).delete().where("id", id)
-  },  
+  },
   solvedby(questionID) {
     return database('solvers').join('questions_solvers', 'solvers.id', '=', 'questions_solvers.solvers_id')
     .join('questions', 'questions.id', '=', 'questions_solvers.questions_id')
     .select('solvers.solver_name')
     .where('questions.id', questionID)
-
-
-    // select('solver_name').from('solvers')
-    //   .join('questions_solvers')
-    //   .on("solvers.id", 'questions_solvers.solvers_id')
-    //   .join('questions').on('questions_solvers.questions_id', 'questions.id')
-      // .where('questions.id', questionID)
-
-// SELECT solver_name
-// FROM solvers JOIN questions_solvers
-// ON solvers.id=questions_solvers.solvers_id
-// JOIN questions ON questions_solvers.questions_id=questions.id
-// WHERE questions.id=3;
-
   }
 };
