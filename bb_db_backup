@@ -1,0 +1,671 @@
+{
+"questions": [
+{
+"id": 23,
+"question_name": "Alphabetize!",
+"question": "Write a function that takes in a string and returns a new string of all letters alphabetized.",
+"solution": "function(string){return string.split(\"\").sort().join()}",
+"submitter": "Kyle Weintraub"
+},
+{
+"id": 4,
+"question_name": "Even or Odd",
+"question": "Create a function that takes an integer as an argument and returns \"Even\" for even numbers or \"Odd\" for odd numbers.",
+"solution": "function even_or_odd(number) {\r\n if ((number % 2) === 0) {\r\n return \"Even\"} else {\r\n return \"Odd\"\r\n}\r\n}\r\neven_or_odd(4)",
+"submitter": "Bryan Long"
+},
+{
+"id": 8,
+"question_name": "Create a Native String Method",
+"question": "Define a repeatify function on the String object. The function accepts an integer that specifies how many times the string has to be repeated. The function returns the string repeated the number of times specified. For example:\r\n\r\nconsole.log('hello'.repeatify(3));\r\n\r\nShould print hellohellohello.",
+"solution": "String.prototype.repeatify = String.prototype.repeatify || function(times) {\r\n   var str = '';\r\n\r\n   for (var i = 0; i < times; i++) {\r\n      str += this;\r\n   }\r\n\r\n   return str;\r\n};",
+"submitter": "Brian Novak"
+},
+{
+"id": 11,
+"question_name": "Count the number of Duplicates",
+"question": "Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits. ",
+"solution": "function getDuplicates(string) {\r\n  var count = {};\r\n  string.split(\"\").forEach(letter => {\r\n    count[letter] ? count[letter]++ : (count[letter] = 1);\r\n  });\r\n  return count;\r\n}",
+"submitter": "BJ Darn Collins"
+},
+{
+"id": 19,
+"question_name": "isIsoGrams()",
+"question": "Isogram is a word with no repeating letters, disregard case. Return true if the function is passed an Isogram, false if the word has repeating letters. ",
+"solution": "function isIsogram(str){\r\n  str = str.toLowerCase();\r\n  for(let i = 0; i<str.length ; i++){\r\n    for(let j = 0; j<str.length ; j++){\r\n      if(i === j){\r\n        continue;\r\n      }\r\n      else if(str[i] == str[j]){\r\n        return false;\r\n      }\r\n    }\r\n  }\r\n  return true;\r\n}\r\n-------\r\nfunction isIsogram(str){\r\n  for (var i = 0 ; i < str.length; i++)\r\n    for (var j = i + 1 ; j < str.length; j++)\r\n      if (str[i].toLowerCase() == str[j].toLowerCase())\r\n        return false;\r\n  \r\n  return true;\r\n}",
+"submitter": "Dan the Beerman"
+},
+{
+"id": 26,
+"question_name": "Find the indexOf a \"needle in a haystack\" without using the indexOf method.",
+"question": "Implement the indexOf method for strings. The indexOf method takes a \"haystack\" string, and a \"needle\" string to search for. So, indexOf(\"hello world\", \"or\") would return 7.",
+"solution": "function indexOf(haystack,needle) {\r\nvar pos = 0;\r\nfor (var i = 0 ; i <= haystack.length - needle.length ; i++) {\r\nfor(var j = 0; j < needle.length; j++) {\r\nif(haystack[i+j] !== needle[j]) {\r\nbreak;\r\n}\r\nif(j === needle.length - 1) {\r\nreturn i;\r\n}\r\n}\r\n}\r\nreturn -1;\r\n}",
+"submitter": "Brandon Johnson"
+},
+{
+"id": 27,
+"question_name": "Write a filter function without native array methods.",
+"question": "Write a function that behaves like the Array.prototype.filter() method without using native array methods.",
+"solution": "function filter(array, fn) {\r\n  var results = [];\r\n  var item;\r\n  for (var i = 0, len = array.length; i < len; i++) {\r\n    item = array[i];\r\n    if (fn(item)) results.push(item);\r\n  }\r\n  return results;\r\n}\r\n\r\n// Usage:\r\nvar list = [1,2,3,...,500];\r\nvar predicate = function(n){ ... };\r\nvar matching = filter(list, predicate);",
+"submitter": "Brandon Johnson"
+},
+{
+"id": 28,
+"question_name": "sorting without sort",
+"question": "You've spent decades setting high scores on Donkey Kong but now, a challenger approaches. Write a function, scoreSettler, that will definitively show who is the King of Kong. scoreSettler will take a list of unsorted scores plus the highest possible score and return a sorted list of all of the scores, in descending order from high score to low score.",
+"solution": "function bubbleSort(array) {\r\n  var done = false;\r\n  while (!done) {\r\n    done = true;\r\n    for (var i = 1; i < array.length; i += 1) {\r\n      if (array[i - 1] > array[i]) {\r\n        done = false;\r\n        var tmp = array[i - 1];\r\n        array[i - 1] = array[i];\r\n        array[i] = tmp;\r\n      }\r\n    }\r\n  }\r\n\r\n  return array;\r\n}\r\n\r\nvar numbers = [12, 10, 15, 11, 14, 13, 16];\r\nbubbleSort(numbers);\r\nconsole.log(numbers);",
+"submitter": "Kevin O'Brien"
+},
+{
+"id": 31,
+"question_name": "rangeFinder",
+"question": "Given an array of numbers (integers), return a string that provides the range of the numbers in the array, in the format of \"min-max\". For example, [4, 2, 98, 33, 17] should return \"2-98\". If passed an empty array, the function should return \"undefined\".",
+"solution": "// Most concise solution I could come up with...\r\n\r\nfunction rangeFinder(array) {\r\n  return array.length === 0 ? \"undefined\" : `${Math.min(...array)}-${Math.max(...array)}`\r\n}",
+"submitter": "Michael Schreier"
+},
+{
+"id": 2,
+"question_name": "Sum 3 integers",
+"question": "Write a function that takes three arguments, sums all three and returns the result",
+"solution": "function sumThreeNum (num1, num2, num3) {\r\n   return num1 + num2 + num3\r\n}",
+"submitter": "Emily Pancake via Galvanize whiteboard curriculum"
+},
+{
+"id": 21,
+"question_name": "String Slicing",
+"question": "You're given the string \"12345.00\", what method can you use to return \"12345.0\"?",
+"solution": "var str = \"12345.00\";\r\nstr = str.slice(0, -1);",
+"submitter": "Gnarly Nick"
+},
+{
+"id": 5,
+"question_name": "Descending Order",
+"question": "Your task is to make a function that can take any non-negative integer as a argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.\r\n\r\nExamples:\r\nInput: 21445 Output: 54421\r\n\r\nInput: 145263 Output: 654321\r\n\r\nInput: 1254859723 Output: 9875543221",
+"solution": "function descendingOrder(n){\r\n  return parseInt(String(n).split(\"\").sort((a, b) => {return b-a}).join(\"\"));\r\n}",
+"submitter": "Carolyn Selheim-Miller"
+},
+{
+"id": 3,
+"question_name": "Make a string uppercase",
+"question": "Write a function that takes a string and returns the uppercase version of that string with an ! at the end.",
+"solution": "function uppercase (string) {\r\n   const upperString = string.toUpperCase();\r\n   return `${upperString}!`\r\n}",
+"submitter": "Emily Pancake via Whiteboard curriculum"
+},
+{
+"id": 9,
+"question_name": "Boolean Code Evaluation",
+"question": "What would the following lines of code output to the console?\r\n\r\nconsole.log(\"0 || 1 = \"+(0 || 1));\r\nconsole.log(\"1 || 2 = \"+(1 || 2));\r\nconsole.log(\"0 && 1 = \"+(0 && 1));\r\nconsole.log(\"1 && 2 = \"+(1 && 2));\r\n\r\nExplain your answer.\r\n",
+"solution": "The code will output the following four lines:\r\n\r\n0 || 1 = 1\r\n1 || 2 = 1\r\n0 && 1 = 0\r\n1 && 2 = 2\r\n\r\nIn JavaScript, both || and && are logical operators that return the first fully-determined “logical value” when evaluated from left to right.\r\n\r\nThe or (||) operator. In an expression of the form X||Y, X is first evaluated and interpreted as a boolean value. If this boolean value is true, then true (1) is returned and Y is not evaluated, since the “or” condition has already been satisfied. If this boolean value is “false”, though, we still don’t know if X||Y is true or false until we evaluate Y, and interpret it as a boolean value as well.\r\n\r\nAccordingly, 0 || 1 evaluates to true (1), as does 1 || 2.\r\n\r\nThe and (&&) operator. In an expression of the form X&&Y, X is first evaluated and interpreted as a boolean value. If this boolean value is false, then false (0) is returned and Y is not evaluated, since the “and” condition has already failed. If this boolean value is “true”, though, we still don’t know if X&&Y is true or false until we evaluate Y, and interpret it as a boolean value as well.\r\n\r\nHowever, the interesting thing with the && operator is that when an expression is evaluated as “true”, then the expression itself is returned. This is fine, since it counts as “true” in logical expressions, but also can be used to return that value when you care to do so. This explains why, somewhat surprisingly, 1 && 2 returns 2 (whereas you might it expect it to return true or 1).\r\n",
+"submitter": "Brain Novak"
+},
+{
+"id": 10,
+"question_name": "Boolean Code Evaluation 2",
+"question": "What will be the output when the following code is executed? Explain.\r\n\r\nconsole.log(false == '0')\r\nconsole.log(false === '0')",
+"solution": "The code will output:\r\n\r\ntrue\r\nfalse\r\n\r\nIn JavaScript, there are two sets of equality operators. The triple-equal operator === behaves like any traditional equality operator would: evaluates to true if the two expressions on either of its sides have the same type and the same value. The double-equal operator, however, tries to coerce the values before comparing them. It is therefore generally good practice to use the === rather than ==. The same holds true for !== vs !=.\r\n",
+"submitter": "Brian Novak"
+},
+{
+"id": 12,
+"question_name": "A Saucy Bitcoin Reduction",
+"question": "Look at this data: https://blockchain.info/latestblock Then use reduce to return the total number of txIndexes (transactions) in the block. ",
+"solution": "object.txIndexes.reduce((bin, item) => {return bin + 1}, 0)",
+"submitter": "Kyle Weintraub"
+},
+{
+"id": 13,
+"question_name": "Remove vowels",
+"question": "Take a string and return a string that has all the original letters with the vowels removed.",
+"solution": "function disemvowel(str) {\r\n  return str.replace(/[aeiou]/gi, '');\r\n}\r\n\r\nOR ....  you could do it the long way like I did:\r\n\r\nfunction disemvowel(str) {\r\n  return str.split(\"\").filter(letter=> isVowel(letter)).join(\"\");\r\n}\r\nfunction isVowel(letter){\r\n  if (letter != \"a\" && letter != \"e\" &&letter != \"o\" && letter != \"i\" && letter != \"u\" && letter!=\"A\" && letter!= \"E\"&& letter!= \"I\" && letter!= \"O\" && letter!= \"U\"){\r\n  return letter\r\n  }\r\n}\r\n\r\n",
+"submitter": "Kevin O'Brien"
+},
+{
+"id": 14,
+"question_name": "FizzBuzz",
+"question": "Create a for loop that iterates up to 100 while outputting \"fizz\" at multiples of 3, \"buzz\" at multiples of 5 and \"fizzbuzz\" at multiples of 3 and 5.",
+"solution": "function fizzbuzz(){\r\n  for(var i = 0; i <= 100; i++){\r\n    if (i % 3 === 0) {\r\n      console.log('fizz')\r\n    } else if (i % 5 === 0) {\r\n      console.log('buzz')\r\n    } else if (i % 3 === 0 && i % 5 === 0) {\r\n      console.log('fizzbuzz')\r\n    }\r\n  }\r\n}\r\n\r\nfizzbuzz()",
+"submitter": "Patrick Biffle"
+},
+{
+"id": 15,
+"question_name": "Convert boolean values to strings 'Yes' or 'No'.",
+"question": "Given a boolean value(true/false), write a function that returns a 'Yes' string for true and a 'No' string for false",
+"solution": "function boolToWord( bool ){\r\n  var result = bool ? \"Yes\" : \"No\"; \r\n  return result;\r\n}",
+"submitter": "James Mann"
+},
+{
+"id": 16,
+"question_name": "Convert fahrenheit to celsius",
+"question": "Given an array of numbers (degrees fahrenheit) use .map to find their converted values in degrees celsius. Hint: The conversion is: -32 * 5/9",
+"solution": "var fahrenheit = [33, 46, 98, 134, 100]\r\nvar celsius = fahrenheit.map(function(element) {\r\n  return Math.round((element-32)*5/9)\r\n})\r\nconsole.log(celsius)\r\n\r\n\r\n// ES6 Fat Arrow:\r\nvar fahrenheit = [33, 46, 98, 134, 100]\r\nvar celsius = fahrenheit.map(element => Math.round((element-32) * 5/9))\r\nconsole.log(celsius)",
+"submitter": "Bryan Long"
+},
+{
+"id": 17,
+"question_name": "Create Phone Number",
+"question": "Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number. Example: createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns \"(123) 456-7890\"",
+"solution": "https://repl.it/repls/PurpleFrozenHadrosaurus",
+"submitter": "Ambeer Johnson"
+},
+{
+"id": 18,
+"question_name": "Testing for Dates.",
+"question": "Write a JavaScript function to check whether an 'input' is a date object or not.",
+"solution": "var is_date = function(input) {\r\n  if ( Object.prototype.toString.call(input) === \"[object Date]\" ) \r\n    return true;\r\n  return false;   \r\n    };",
+"submitter": "SarahEvelynn"
+},
+{
+"id": 24,
+"question_name": "Zip Arrays",
+"question": "Implement a function which takes two parameters, both of which are arrays, and zip them together.\r\n\r\nie: The arguments are [1,2,3], and [4,5,6], and after zipping the two arrays, you return [1,4,2,5,3,6].",
+"solution": "function zipArrays(array1, array2) {\r\n  var newArray = [];\r\n  for (var i = 0; i < array1.length; i++) {\r\n    newArray.push(array1[i], array2[i]);\r\n  }\r\n  console.log(newArray);\r\n}\r\n\r\nzipArrays([1,2,3], [4,5,6]);",
+"submitter": "Brandon Johnson"
+},
+{
+"id": 25,
+"question_name": "Binary Search",
+"question": "Binary Search\r\nWrite a function that implements binary search.\r\nProblem\r\n\r\nGiven a sorted array of numbers, locate the index of a specified value according to the following algorithm. First identify the middle number in the array. Next determine if the value to be found is greater than, lower than, or equal to the middle number. If it is equal, you are finished, and output the index of the found value. If not, repeat the procedure for a smaller array, formed from by taking half of the given array that the specified number falls into.",
+"solution": "function binarySearch(array, value, start, end){\r\n\r\nwhile (start <= end){\r\n\r\nvar midIndex = Math.floor((start + end) / 2);\r\nvar midValue = array[midIndex];\r\n\r\nif (midValue === value){\r\nreturn midIndex;\r\n}\r\nelse if (midValue < value){\r\nstart = midIndex+1;\r\n}\r\nelse {\r\nend = midIndex-1;\r\n}\r\n}\r\nreturn -1;\r\n};",
+"submitter": "Brandon Johnson"
+},
+{
+"id": 22,
+"question_name": "Door Guy",
+"question": "Writes a function that takes in an array of years, and returns an array of booleans stating whether or not a person born that year is of legal drinking age (you don't need to worry about being completely accurate in the case of the person turning 21 this year, since you're only given years and not exact dates). ",
+"solution": "var years = [1965, 1979, 2007, 1997];\r\nvar results = [];\r\n\r\nfunction getAges(yearsArray) {\r\n  for (var i = 0; i < yearsArray.length; i++) {\r\n    let age = 2018 - yearsArray[i];\r\n    if (age >= 21) {\r\n      results.push(true);\r\n    } else {\r\n      results.push(false);\r\n    }\r\n  }\r\n  return results;\r\n}\r\n\r\nconsole.log(getAges(years));",
+"submitter": "Tyler Mustard"
+},
+{
+"id": 29,
+"question_name": "Who is going to pay for the wall?",
+"question": "Your code will show the Full name of the person who will pay for the wall and the truncated version(First 2 letters) of the name as an array. If the number of the characters in name is equal or less than two, it will return the name as is.  Input: \"James\" Output: [\"James\", \"Ja\"]. If name is 2 chars or less. Input: \"BJ\" Output: [\"BJ\"]",
+"solution": "function whoIsPaying(name){\r\nvar nameArr = [];\r\nname.length <= 2 ? nameArr.push(name) : nameArr.push(name, name.slice(0,2));\r\nreturn nameArr;\r\n}",
+"submitter": "James Mann"
+},
+{
+"id": 30,
+"question_name": "List Filtering",
+"question": "In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out. Input: [1,2,'a','b']  Output: [1,2]",
+"solution": "function filter_list(l) {\r\n return l.filter(item => typeof item === \"number\")\r\n}",
+"submitter": "James Mann"
+},
+{
+"id": 7,
+"question_name": " Integer Swap",
+"question": "Given two integers, write a function that swaps them without using any temporary variables.",
+"solution": "function swap(x,y) {\r\n    x = x + y;\r\n    y = x - y;\r\n    x = x - y;\r\n}\r\n// Dan's ES7/8 version (destructuring w/ arrays):\r\n[x, y] = [y, x]\r\n\r\n\r\n// non-mathy function | Matt Hooper\r\nfunction swap(a,b) {\r\n  b = a.toString() + b.toString()\r\n  a = parseInt(b[1])\r\n  b = parseInt(b[0])\r\n}",
+"submitter": ""
+},
+{
+"id": 20,
+"question_name": "Is this a triangle?",
+"question": "Write a function that takes 3 lengths and determines if these three lengths combined can make a triangle.   If the three sides can make a triangle, return true. If they cannot, return false.\n\nOptional Hint: The sum of the lengths of any two sides of a triangle is greater than the length of the third side. If you take the three sides of a triangle and add them in pairs, the sum is greater than (not equal to) the third side. If that is not true, then it is not possible to construct a triangle with the given side lengths.",
+"solution": "function isTriangle(a, b, c){\nif(a+b>c && b+c>a && a+c >b){\n      return true\n  }else{\nreturn false\n  }\n}",
+"submitter": "Kevin O'Brien"
+},
+{
+"id": 33,
+"question_name": "Bus Boarding",
+"question": "There is a bus moving in the city, and it takes and drop some people in each bus stop.\r\n\r\nYou are provided with a list (or array) of integer arrays (or tuples). Each integer array has two items which represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.\r\n\r\nYour task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D\r\nTake a look on the test cases.\r\nPlease keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.\r\nThe second value in the first integer array is 0, since the bus is empty in the first bus stop.\r\n",
+"solution": "var number = function(busStops){\r\n  var peopleOn = 0;\r\n  var peopleOff = 0;\r\n  for(var i = 0; i < busStops.length; i++) {\r\n    peopleOn += busStops[i][0];\r\n    peopleOff += busStops[i][1];\r\n  }\r\n  return peopleOn - peopleOff;\r\n}",
+"submitter": "Bryan Long"
+},
+{
+"id": 34,
+"question_name": "Fibonacci",
+"question": "Write a JavaScript program to get the first n Fibonacci numbers.\r\n\r\nNote: The Fibonacci Sequence is the series of numbers: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, . . . Each subsequent number is the sum of the previous two.",
+"solution": "var fibonacci_series = function (n) \r\n{\r\n  if (n===1) \r\n  {\r\n    return [0, 1];\r\n  } \r\n  else \r\n  {\r\n    var s = fibonacci_series(n - 1);\r\n    s.push(s[s.length - 1] + s[s.length - 2]);\r\n    return s;\r\n  }\r\n};\r\n\r\n console.log(fibonacci_series(8));",
+"submitter": "Emily Pancake"
+},
+{
+"id": 1,
+"question_name": "Array plus array",
+"question": "Get the sum of two arrays...actually the sum of all their elements. Each array includes only integer numbers. Output is a number too.",
+"solution": "function arrayPlusArray(arr1, arr2) {\r\n   return arr1.concat(arr2).reduce((acc, cur) => acc + cur)\r\n}",
+"submitter": "Emily Pancake via codewars"
+},
+{
+"id": 35,
+"question_name": "Prime Numbers",
+"question": "Write a function that returns an array with all of the prime numbers up to 100.\r\n\r\nHint on exactly what prime numbers are: A prime number is a positive integer that has exactly two positive integer factors, 1 and itself. For example, if we list the factors of 28, we have 1, 2, 4, 7, 14, and 28. That's six factors. If we list the factors of 29, we only have 1 and 29. That's two factors. So we say that 29 is a prime number, but 28 isn't.",
+"solution": "function primeNums (n) {\r\n     let primeArray = [];\r\n     let tempArray = [];\r\n     for (let i=2; i<=n; i++) {\r\n          let tempArray = []\r\n    for (let x=2; x<=n; x++) {\r\n      if (x <= i) {\r\n        tempArray.push(i % x)\r\n        if (!tempArray.includes(0) && !primeArray.includes(i) || i === 2) {\r\n        primeArray.push(i)\r\n      }\r\n    } \r\n  }\r\n  } return primeArray \r\n}\r\n\r\nprimeNums(100)",
+"submitter": "Emily Pancake"
+},
+{
+"id": 37,
+"question_name": "Find the largest 5 digit number in a sequence of digits",
+"question": "In the following 6 digit number:\r\n\r\n283910\r\n91 is the greatest sequence of 2 consecutive digits.\r\n\r\nIn the following 10 digit number:\r\n\r\n1234567890\r\n67890 is the greatest sequence of 5 consecutive digits.\r\n\r\nComplete the solution so that it returns the greatest sequence of five consecutive digits found within the number given. The number will be passed in as a string of only digits. It should return a five digit integer. The number passed may be as large as 1000 digits.\r\n\r\nExample input: 790223492\r\nExample output: 90223",
+"solution": "function solution(digits){\r\n  let biggestNum = 0\r\n  let newArray = (\"\"+digits).split(\"\")\r\n  for(let i = newArray.length-5; i>=0; i--) {\r\n    let testNum = newArray[i] + newArray[i+1] + newArray[i+2] + newArray[i+3] + newArray[i+4]\r\n    if (testNum > biggestNum) {\r\n      biggestNum = testNum\r\n    }\r\n  } return parseInt(biggestNum)\r\n}",
+"submitter": "Emily Pancake"
+},
+{
+"id": 38,
+"question_name": "DNA matching",
+"question": "Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the \"instructions\" for the development and functioning of living organisms.\r\n\r\nIn DNA strings, symbols \"A\" and \"T\" are complements of each other, as \"C\" and \"G\". You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell). \r\n\r\nDNAStrand (\"ATTGC\") # return \"TAACG\"\r\n\r\nDNAStrand (\"GTAT\") # return \"CATA\"",
+"solution": "function DNAStrand(dna){\r\n  let oppositeArray = [];\r\n//   Splits one string into multiple indices of array seperated by comma\r\n  var splitString = dna.split(\"\");\r\n  \r\n// Pushes opposite value into oppositeArray  \r\n  for (let i = 0; i < splitString.length; i++) {\r\n    switch(splitString[i]) {\r\n    case 'A':\r\n        oppositeArray.push('T');\r\n        break;\r\n    case 'T':\r\n        oppositeArray.push('A');\r\n        break;\r\n    case 'C':\r\n        oppositeArray.push('G');\r\n        break;\r\n    case 'G':\r\n        oppositeArray.push('C'); \r\n    }\r\n  }\r\n//   Joins indices of oppositeArray to make one string\r\n  let oppositeJoinedArray = oppositeArray.join('');\r\n  return oppositeJoinedArray;\r\n}",
+"submitter": "Michael Miller"
+},
+{
+"id": 41,
+"question_name": "Highest and Lowest",
+"question": "In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.\n\nhighAndLow(\"1 2 3 4 5\"); // return \"5 1\"\n\nhighAndLow(\"1 2 -3 4 5\"); // return \"5 -3\"",
+"solution": "function highAndLow(numbers){\n  let arr = numbers.split(' ').map(Number);  \n  return Math.max(...arr) + ' ' + Math.min(...arr);\n}",
+"submitter": "Brandon Henning"
+},
+{
+"id": 42,
+"question_name": "Count Vowels",
+"question": "Given a string of any length, write a function that returns the number of vowels in the string. The only vowels that count are a, e, i, o, and u. ",
+"solution": "function vowelCounter(str){\n  var count = 0;\n  var splitUp = str.toLowerCase().split('');\n  splitUp.forEach(l => {\n    if (l === 'a' || l === 'e' || l === 'i' || l === 'o' || l === 'u'){\n      count += 1;\n    }\n  })\n  return count;\n}",
+"submitter": "Kyle Weintraub"
+},
+{
+"id": 43,
+"question_name": "Number Reversal",
+"question": "Write a function that will accept an integer greater than 0 and return the integer with the digits reversed. For example, an input of 521 should yield an output of 125 (formatted as a number).",
+"solution": "function numberReversal(number) {\n    return parseInt(number.toString().split(\"\").reverse().join(\"\"));\n}",
+"submitter": "Michael Schreier"
+},
+{
+"id": 44,
+"question_name": "isPalindrome",
+"question": "Write a function that takes a string and returns a boolean indicating whether or not the string is a palindrome (is the same backwards as it is forwards). For example \"hello\" should return false and \"tacocat\" should return true.",
+"solution": "function isPalindrome(input) {\n  return input.split(\"\").reverse().join(\"\") === input;\n}",
+"submitter": "Michael Schreier"
+},
+{
+"id": 45,
+"question_name": "Greeting",
+"question": "Given a name of someone in attendance at Beer Boarding, greet them. In other words, return a string that says \"Hello, (name)\"",
+"solution": "const thisGuy = 'James'\r\n\r\nconst greeting = (name) => {\r\n  return 'Hello ' + name\r\n}\r\n\r\ngreeting(thisGuy)",
+"submitter": "Emily Pancake"
+},
+{
+"id": 46,
+"question_name": "longestStrings",
+"question": "Given an array of strings, return another array containing all of its longest strings.",
+"solution": "For inputArray = [\"aba\", \"aa\", \"ad\", \"vcd\", \"aba\"], the output should be\r\nallLongestStrings(inputArray) = [\"aba\", \"vcd\", \"aba\"].\r\n\r\n\r\nfunction allLongestStrings(inputArray) {\r\n    let maxSize = Math.max(...inputArray.map(x => x.length));\r\n    return inputArray.filter(x => x.length === maxSize);\r\n}",
+"submitter": "Matt Hooper"
+},
+{
+"id": 6,
+"question_name": "Accumulate Interest ",
+"question": "Mr. Scrooge has a sum of money 'P' that he wants to invest, and he wants to know how many years 'Y' this sum has to be kept in the bank in order for this sum of money to amount to 'D'.\r\n\r\nThe sum is kept for 'Y' years in the bank where interest 'I' is paid yearly, and the new sum is re-invested yearly after paying tax 'T'\r\n\r\nNote that the principal is not taxed but only the year's accrued interest\r\n\r\nExample:\r\n\r\nLet P be the Principal = 1000.00      \r\nLet I be the Interest Rate = 0.05      \r\nLet T be the Tax Rate = 0.18      \r\nLet D be the Desired Sum = 1100.00\r\n\r\n\r\nAfter 1st Year -->\r\nP = 1041.00\r\nAfter 2nd Year -->\r\nP = 1083.86\r\nAfter 3rd Year -->\r\nP = 1128.30\r\n\r\nThus Mr. Scrooge has to wait for 3 years for the initial principal to amount to the desired sum.\r\n\r\nYour task is to write a function with the principal, interest, tax, and desired sum as parameters that returns the number of years it will take for the initial principal to amount to the desired sum. \r\n\r\nAssumptions: Assume that Desired Principal 'D' is always greater than the initial principal, however it is best to take into consideration that if the Desired Principal 'D' is equal to Principal 'P' this should return 0 Years.",
+"solution": "function calculateYears(principal, interest, tax, desired) {\r\n  for( var i=0; principal<desired; i++) {\r\n    principal += (principal * interest) - ((principal * interest) * tax)\r\n  }\r\n  return i\r\n}",
+"submitter": "Paul Highum"
+},
+{
+"id": 47,
+"question_name": "Number Extraction",
+"question": "Retrieve all items from an array  where ‘i < 30’ where values are stored as a string (i.e. “25%”).",
+"solution": "",
+"submitter": "Josh Lovely"
+},
+{
+"id": 48,
+"question_name": "Make State Name / Abbreviation Array of Objects",
+"question": "A web developer has an array of state names and an array of state abbreviations. They need an array of objects where each object contains the full state name and its corresponding abbreviation. \n\nconst example = [\n  {\n     name: \"Alaska\",\n     abbr: \"AK\"\n  }\n]\n\nconst abbr = [ 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA',  'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR',  'PA',  'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT',  'VA', 'WA', 'WV', 'WI', 'WY' ];\n\nconst states = [\n  'Alabama',\n  'Alaska',\n  'Arizona',\n  'Arkansas',\n  'California',\n  'Colorado',\n  'Connecticut',\n  'Delaware',\n  'District of Columbia',\n  'Florida',\n  'Georgia',\n  'Hawaii',\n  'Idaho',\n  'Illinois',\n  'Indiana',\n  'Iowa',\n  'Kansas',\n  'Kentucky',\n  'Louisiana',\n  'Maine',\n  'Maryland',\n  'Massachusetts',\n  'Michigan',\n  'Minnesota',\n  'Mississippi',\n  'Missouri',\n  'Montana',\n  'Nebraska',\n  'Nevada',\n  'New Hampshire',\n  'New Jersey',\n  'New Mexico',\n  'New York',\n  'North Carolina',\n  'North Dakota',\n  'Ohio',\n  'Oklahoma',\n  'Oregon',\n  'Pennsylvania',\n  'Rhode Island',\n  'South Carolina',\n  'South Dakota',\n  'Tennessee',\n  'Texas',\n  'Utah',\n  'Vermont',\n  'Virginia',\n  'Washington',\n  'West Virginia',\n  'Wisconsin',\n  'Wyoming'\n];\n\n",
+"solution": "const makeStatesArray = () => {\n  const final = []\n  for (let i = 0; i < states.length; i++ ) {\n    final.push({ name: states[i], abbr: abbr[i] })\n  }\n  return final \n}\n\nmakeStatesArray()",
+"submitter": "Matt Hooper"
+},
+{
+"id": 49,
+"question_name": "How Many Printer Errors",
+"question": "In a factory a printer prints labels for boxes. For one kind of boxes the printer has to use colors which, for the sake of simplicity, are named with letters from a to m.\n\nThe colors used by the printer are recorded in a control string. For example a \"good\" control string would be \"aaabbbbhaijjjm\" meaning that the printer used three times color a, four times color b, one time color h then one time color a...\n\nSometimes there are problems: lack of colors, technical malfunction and a \"bad\" control string is produced e.g. \"aaaxbbbbyyhwawiwjjjwwm\".\n\nYou have to write a function printer_error which given a string will output the error rate of the printer as a string representing a rational whose numerator is the number of errors and the denominator the length of the control string. Don't reduce this fraction to a simpler expression.\n\nThe string has a length greater or equal to one and contains only letters from a to z.\n\nFor example:\ns=\"aaabbbbhaijjjm\"\nerror_printer(s) => \"0/14\"\n\ns=\"aaaxbbbbyyhwawiwjjjwwm\"\nerror_printer(s) => \"8/22\"",
+"solution": "function printerError(s) {\n    return `${(s.match(/[n-z]/g) || []).length}/${s.length}`\n}",
+"submitter": "Michael Schreier"
+},
+{
+"id": 50,
+"question_name": "The Museum of Incredible Dull Things",
+"question": "The Museum of Incredible Dull Things wants to get rid of some exhibitions. Miriam, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and then removes the one with the lowest rating.\n\nHowever, just as she finished rating all exhibitions, she's off to an important fair, so she asks you to write a program that tells her the ratings of the items after one removed the lowest one. Fair enough.\n\nYour Task:\nGiven an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.\n\nDon't change the order of the elements that are left.\n\nExamples:\nremoveSmallest([1,2,3,4,5]) = [2,3,4,5]\nremoveSmallest([5,3,2,1,4]) = [5,3,2,4]\nremoveSmallest([2,2,1,2,1]) = [2,2,2,1]",
+"solution": "function removeSmallest(numbers) {\n  let min = Math.min(...numbers);\n  let removed = false;\n  return numbers.reduce((acc, n) => {\n    if (n === min && !removed) removed = true;\n    else acc.push(n);\n    return acc;\n  }, []);\n}",
+"submitter": "Michael Schreier"
+}
+],
+"solvers": [
+{
+"id": 1,
+"solver_name": "Emily Pancake"
+},
+{
+"id": 2,
+"solver_name": "James Mann"
+},
+{
+"id": 3,
+"solver_name": "Bryan Long"
+},
+{
+"id": 4,
+"solver_name": "Patrick \"trouble\" Biffle"
+},
+{
+"id": 5,
+"solver_name": "BJ \"Darn\" Collins"
+},
+{
+"id": 6,
+"solver_name": "Michael Marlow"
+},
+{
+"id": 7,
+"solver_name": "Dan Beerman"
+},
+{
+"id": 8,
+"solver_name": "Kyle Weintraub"
+},
+{
+"id": 9,
+"solver_name": "Kevin O'Brien"
+},
+{
+"id": 10,
+"solver_name": "Nick Solimine"
+},
+{
+"id": 12,
+"solver_name": "Jay Farnsworth"
+},
+{
+"id": 13,
+"solver_name": "Greg Paulos"
+},
+{
+"id": 14,
+"solver_name": "Brain Novak"
+},
+{
+"id": 15,
+"solver_name": "Michael Schreier"
+},
+{
+"id": 16,
+"solver_name": "Ready Roberto"
+},
+{
+"id": 17,
+"solver_name": "Kevin Kingdon"
+},
+{
+"id": 18,
+"solver_name": "Carolyn Selheim-Miller"
+},
+{
+"id": 19,
+"solver_name": "Kyle Coberly"
+},
+{
+"id": 20,
+"solver_name": "David Powers"
+},
+{
+"id": 21,
+"solver_name": "Brandon Henning"
+},
+{
+"id": 22,
+"solver_name": "Tyler Mustard"
+},
+{
+"id": 23,
+"solver_name": "Clark Newell"
+},
+{
+"id": 24,
+"solver_name": "Eldon Dahlin"
+},
+{
+"id": 25,
+"solver_name": "Michael Lavin"
+},
+{
+"id": 26,
+"solver_name": "Colin Nielsen"
+},
+{
+"id": 27,
+"solver_name": "Brice"
+},
+{
+"id": 28,
+"solver_name": "Matt Hooper"
+},
+{
+"id": 29,
+"solver_name": ""
+},
+{
+"id": 30,
+"solver_name": "Cory Pease"
+}
+],
+"questions_solvers": [
+{
+"id": 1,
+"questions_id": 1,
+"solvers_id": 1
+},
+{
+"id": 2,
+"questions_id": 1,
+"solvers_id": 2
+},
+{
+"id": 3,
+"questions_id": 3,
+"solvers_id": 3
+},
+{
+"id": 4,
+"questions_id": 4,
+"solvers_id": 2
+},
+{
+"id": 5,
+"questions_id": 8,
+"solvers_id": 3
+},
+{
+"id": 6,
+"questions_id": 10,
+"solvers_id": 4
+},
+{
+"id": 7,
+"questions_id": 13,
+"solvers_id": 1
+},
+{
+"id": 8,
+"questions_id": 13,
+"solvers_id": 2
+},
+{
+"id": 9,
+"questions_id": 15,
+"solvers_id": 6
+},
+{
+"id": 10,
+"questions_id": 15,
+"solvers_id": 5
+},
+{
+"id": 11,
+"questions_id": 16,
+"solvers_id": 7
+},
+{
+"id": 12,
+"questions_id": 17,
+"solvers_id": 7
+},
+{
+"id": 13,
+"questions_id": 17,
+"solvers_id": 5
+},
+{
+"id": 14,
+"questions_id": 19,
+"solvers_id": 8
+},
+{
+"id": 15,
+"questions_id": 22,
+"solvers_id": 3
+},
+{
+"id": 16,
+"questions_id": 23,
+"solvers_id": 9
+},
+{
+"id": 53,
+"questions_id": 1,
+"solvers_id": 4
+},
+{
+"id": 56,
+"questions_id": 5,
+"solvers_id": 5
+},
+{
+"id": 57,
+"questions_id": 29,
+"solvers_id": 1
+},
+{
+"id": 58,
+"questions_id": 11,
+"solvers_id": 12
+},
+{
+"id": 59,
+"questions_id": 19,
+"solvers_id": 13
+},
+{
+"id": 60,
+"questions_id": 17,
+"solvers_id": 1
+},
+{
+"id": 61,
+"questions_id": 1,
+"solvers_id": 14
+},
+{
+"id": 62,
+"questions_id": 7,
+"solvers_id": 15
+},
+{
+"id": 64,
+"questions_id": 15,
+"solvers_id": 13
+},
+{
+"id": 65,
+"questions_id": 24,
+"solvers_id": 16
+},
+{
+"id": 66,
+"questions_id": 17,
+"solvers_id": 17
+},
+{
+"id": 67,
+"questions_id": 13,
+"solvers_id": 15
+},
+{
+"id": 68,
+"questions_id": 31,
+"solvers_id": 4
+},
+{
+"id": 69,
+"questions_id": 28,
+"solvers_id": 18
+},
+{
+"id": 70,
+"questions_id": 31,
+"solvers_id": 1
+},
+{
+"id": 71,
+"questions_id": 34,
+"solvers_id": 19
+},
+{
+"id": 72,
+"questions_id": 15,
+"solvers_id": 1
+},
+{
+"id": 73,
+"questions_id": 16,
+"solvers_id": 8
+},
+{
+"id": 74,
+"questions_id": 22,
+"solvers_id": 9
+},
+{
+"id": 75,
+"questions_id": 20,
+"solvers_id": 7
+},
+{
+"id": 76,
+"questions_id": 35,
+"solvers_id": 16
+},
+{
+"id": 77,
+"questions_id": 7,
+"solvers_id": 7
+},
+{
+"id": 78,
+"questions_id": 16,
+"solvers_id": 2
+},
+{
+"id": 79,
+"questions_id": 8,
+"solvers_id": 15
+},
+{
+"id": 80,
+"questions_id": 14,
+"solvers_id": 22
+},
+{
+"id": 81,
+"questions_id": 22,
+"solvers_id": 23
+},
+{
+"id": 82,
+"questions_id": 8,
+"solvers_id": 8
+},
+{
+"id": 83,
+"questions_id": 4,
+"solvers_id": 24
+},
+{
+"id": 84,
+"questions_id": 5,
+"solvers_id": 25
+}
+]
+}
