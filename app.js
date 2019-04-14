@@ -16,15 +16,11 @@ app.get("/", (request, response) => {
         .then(solvers => 
           queries.list("questions_solvers")
             .then(questions_solvers =>
-              queries.list("difficulty")
-                .then(difficulty => 
-                  response.json({
-                    questions: questions,
-                    solvers: solvers,
-                    questions_solvers: questions_solvers,
-                    difficulty: difficulty               
-                  })
-                )    
+              response.json({
+                questions: questions,
+                solvers: solvers,
+                questions_solvers: questions_solvers,
+              })  
             )
         )
     )
@@ -43,14 +39,6 @@ app.get("/solvers", (request, response) => {
   queries.list("solvers")
     .then(solvers => {
       response.json({ solvers });
-    })
-    .catch(err => response.status(500).send({message: err.message}));
-});
-
-app.get("/difficulty", (request, response) => {
-  queries.list("difficulty")
-    .then(difficulty => {
-      response.json({ difficulty });
     })
     .catch(err => response.status(500).send({message: err.message}));
 });
@@ -128,13 +116,6 @@ app.post("/questions_solvers", (request, response) => {
     .catch(err => response.status(500).send({message: err.message}));
 });
 
-app.post("/difficulty", (request, response) => {
-  queries.create("difficulty", request.body).then(difficulty => {
-    response.status(201).json({difficulty});
-  })
-    .catch(err => response.status(500).send({message: err.message}));
-});
-
 app.delete("/questions/:id", (request, response) => {
   queries.delete("questions", request.params.id).then(() => {
     response.sendStatus(204);
@@ -159,13 +140,6 @@ app.delete("/questions_solvers/:id", (request, response) => {
 app.put("/questions/:id", (request, response) => {
   queries.update("questions", request.params.id, request.body).then(question => {
     response.json({question});
-  })
-    .catch(err => response.status(500).send({message: err.message}));
-});
-
-app.put("/difficulty/:id", (request, response) => {
-  queries.update("difficulty", request.params.id, request.body).then(difficulty => {
-    response.json({difficulty});
   })
     .catch(err => response.status(500).send({message: err.message}));
 });
