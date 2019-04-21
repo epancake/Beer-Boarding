@@ -52,7 +52,7 @@ app.get("/solvedby/:id", (request, response) => {
 });
 
 app.get("/questions/:id", (request, response) => {
-  queries.solvedby(request.params.id)
+  queries.read("questions", request.params.id)
     .then(questions => {
       response.json({ questions });
     })
